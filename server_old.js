@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === 'production') {
 const host = 'localhost';
 const user = 'root';
 const pswd = 'sql2021!';
-const dbname = 'habit';
+const dbname = 'books';
 
 // config db ====================================
 const pool = mysql.createPool({
@@ -34,12 +34,12 @@ const pool = mysql.createPool({
   database: dbname
 });
 
-const COLUMNS = ['user_id', 'habit_id', 'day', 'num']; //
+const COLUMNS = ['last_name', 'first_name']; //
 
-app.get('/api/records', (req, res) => {
-  const user_id = req.query.user_id;
+app.get('/api/books', (req, res) => {
+  const firstName = req.query.firstName;
 
-  if (!user_id) {
+  if (!firstName) {
     res.json({
       error: 'Missing required parameters'
     });
@@ -47,17 +47,14 @@ app.get('/api/records', (req, res) => {
   }
 
   let queryString = ``;
-  if (user_id == '*') {
-    queryString = `SELECT * from records`;
+  if (firstName == '*') {
+    queryString = `SELECT * from authors`;
   } else {
-    queryString = `SELECT * from records WHERE user_id = '${user_id}'`;
+    queryString = `SELECT * from authors WHERE first_name REGEXP '^${firstName}'`;
   }
 
   pool.query(queryString, function(err, rows, fields) {
-    if (err) {
-      console.log(err);
-      throw err;
-    }
+    if (err) throw err;
 
     if (rows.length > 0) {
       res.json(
@@ -66,7 +63,6 @@ app.get('/api/records', (req, res) => {
           COLUMNS.forEach(c => {
             e[c] = entry[c];
           });
-          //e[11] = 123; //
           return e;
         })
       );
@@ -76,23 +72,20 @@ app.get('/api/records', (req, res) => {
   });
 });
 
-// post로 바꿔야 할 것 같다. 사용자가 임의로 url을 변경하여 데이터를 추가할 수 있으니. 서비스에서 제공하는 입력 폼을 통해서만 추가할 수 있게 하고 싶다.
-app.get('/api/add_records', (req, res) => {
-  const user_id = req.query.user_id;
-  const habit_id = req.query.habit_id;
-  const day = req.query.day;
-  const num = req.query.num;
+app.get('/api/add_books', (req, res) => {
+  const firstName = req.query.firstName;
+  const lastName = req.query.lastName;
 
-  if (!user_id || !habit_id || !day || !num) {
+  if (!firstName || !lastName) {
     res.json({
       error: 'Missing required parameters'
     });
     return;
   }
 
-  let queryString = `insert into habit.records (user_id, habit_id, day, num) VALUES ('${user_id}', '${habit_id}', '${day}', ${num});`;
+  let queryString = `insert into books.authors (first_name, middle_name, last_name) VALUES ('${firstName}', NULL, '${lastName}');`;
 
-  pool.query(queryString, function(err, res) {
+  pool.query(queryString, function(err, result1) {
     if (err) throw err;
     res.json([]);
     console.log('insert succeeded.');

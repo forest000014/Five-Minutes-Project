@@ -28,26 +28,18 @@ class Search extends Component {
     let titleAndForm = (
       <Container>
         <Row className="show-grid top10">
-          <h2> This is main blue box.</h2>
+          <h2> Filter Authors Database by First Name</h2>
         </Row>
         <Row className="show-grid top10">
           <Form inline onSubmit={this.onSubmit}>
             <FormGroup>
               <Input
                 type="search"
-                name="searchUserId" //
+                name="search"
                 ref="searchInput"
                 id="searchInput"
-                placeholder="input user_id"
+                placeholder="First Name"
                 onChange={this.onChange}
-              />
-              <Input
-                type="search"
-                name="searchMonth" //
-                ref="searchInput"
-                id="searchInput"
-                placeholder="input month"
-                onChange={this.onChange} //
               />
             </FormGroup>
             <Button className="btn-ll5" onClick={this.onClear}>
@@ -65,7 +57,7 @@ class Search extends Component {
     let fullForm = (
       <Container>
         <Row className="show-grid top10">
-          <h2> This is main blue box. (with data searched)</h2>
+          <h2> Filter Authors Database by First Name</h2>
         </Row>
         <Row className="show-grid top10">
           <Form inline onSubmit={this.onSubmit}>
@@ -79,10 +71,10 @@ class Search extends Component {
         </Row>
         <Row className="show-grid top10">
           <BootstrapTable data={this.props.searchData} search={false}>
-            <TableHeaderColumn dataField="user_id">User id</TableHeaderColumn>
-            <TableHeaderColumn dataField="habit_id">Habit id</TableHeaderColumn>
-            <TableHeaderColumn dataField="day">Day</TableHeaderColumn>
-            <TableHeaderColumn dataField="num">Times</TableHeaderColumn>
+            <TableHeaderColumn dataField="first_name">First Name</TableHeaderColumn>
+            <TableHeaderColumn dataField="last_name" isKey={true}>
+              Last Name
+            </TableHeaderColumn>
           </BootstrapTable>
         </Row>
       </Container>
