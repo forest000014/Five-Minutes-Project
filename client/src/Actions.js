@@ -4,3 +4,4 @@ export function changeSearchData(data) {
     data
   };
 }
+// Sagas.js에서 쓰임.

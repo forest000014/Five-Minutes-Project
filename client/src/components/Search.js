@@ -7,7 +7,7 @@ import { Container, Row } from 'reactstrap';
 
 class Search extends Component {
   onChange = e => {
-    if (e.target.value === '') { //
+    if (e.target.value === '') { // 닉네임과 날짜의 onChange를 별개로 관리하자
       this.props.fetchData({ firstName: '*' });
     } else {
       this.props.fetchData({ firstName: e.target.value });

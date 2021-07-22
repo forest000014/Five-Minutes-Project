@@ -14,6 +14,9 @@ class Search extends Component {
     }
     // 여기서 업데이트 해주는 firstName property는 어디에서 쓰이지?
     //   -> Sagas.js 의 searchData 생성에 쓰임.
+    // 'firstName'은 어디의 값? 어떻게 쓰이지?
+    //   -> fetchData에 정의된 dispatch()를 통해, redux store의 state에 저장된다.
+    //   -> 이는 redux의 connect()를 통해, <ConnectedSearch>의 props로 넘겨진다.
     console.log();
   };
 
@@ -93,10 +96,14 @@ class Search extends Component {
 }
 
 function mapStatetoProps(state) { 
-  // 그럼 이 state는 어디서 받아오는 거지? state.searchData는 언제 어디서 만들어지는 거지?
-  //  -> connect가 react-redux에서 import 해온 것으로 미루어 보아... redux store에 저장된 state일 것으로 추측.
+  // 이 state는 어디서 받아오는 거지? 
+  //  -> connect가 redux store에 저장된 state를 props로 넘겨주기 위해 필요
+  // state.searchData는 언제 어디서 만들어지는 거지?
+  //  -> dispatch가 실행될 때, reducer가 state를 변경해줌.
+  //  -> dispatch를 여기서는 fetchData() 메소드에 정의해 놓음.
+  //  -> 그래서 onChange, onClear 이벤트가 발생할 때마다, fetchData()를 실행하여, redux store의 state를 변경해줌.
   return {
-    searchData: state.searchData // 여기서 this.props.searchData에 값을 넣어주는 것 같다.
+    searchData: state.searchData // 이 리턴값을 이용해 this.props.searchData에 값을 넣어주는 것 같다.
   };
 }
 
