@@ -7,7 +7,7 @@ import { Container, Row } from 'reactstrap';
 
 class Search extends Component {
   onChange = e => {
-    if (e.target.value === '') {
+    if (e.target.value === '') { //
       this.props.fetchData({ firstName: '*' });
     } else {
       this.props.fetchData({ firstName: e.target.value });
@@ -44,8 +44,8 @@ class Search extends Component {
               <Input
                 type="search"
                 name="searchMonth" //
-                ref="searchInput"
-                id="searchInput"
+                ref="searchInput" //
+                id="searchInput" //
                 placeholder="input month"
                 onChange={this.onChange} //
               />
@@ -70,7 +70,7 @@ class Search extends Component {
         <Row className="show-grid top10">
           <Form inline onSubmit={this.onSubmit}>
             <FormGroup>
-              <Input type="search" name="search" id="searchInput" placeholder="First Name" onChange={this.onChange} />
+              <Input type="search" name="search" id="searchInput" placeholder="input user_id" onChange={this.onChange} />
             </FormGroup>
             <Button className="btn-ll5" onClick={this.onClear}>
               Clear
@@ -81,7 +81,7 @@ class Search extends Component {
           <BootstrapTable data={this.props.searchData} search={false}>
             <TableHeaderColumn dataField="user_id">User id</TableHeaderColumn>
             <TableHeaderColumn dataField="habit_id">Habit id</TableHeaderColumn>
-            <TableHeaderColumn dataField="day">Day</TableHeaderColumn>
+            <TableHeaderColumn dataField="day" isKey={true}>Day</TableHeaderColumn>
             <TableHeaderColumn dataField="num">Times</TableHeaderColumn>
           </BootstrapTable>
         </Row>

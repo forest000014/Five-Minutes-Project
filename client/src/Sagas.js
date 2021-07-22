@@ -3,8 +3,8 @@ import Client from './Client';
 import * as Actions from './Actions';
 
 function* fetchSearchData(action) {
-  const searchData = yield call(Client.search, action.payload.firstName);
-  const result = yield put(Actions.changeSearchData(searchData));
+  const searchData = yield call(Client.search, action.payload.firstName); // searchData, firstName
+  const result = yield put(Actions.changeSearchData(searchData)); // searchData 
 
   // if it is from a redux-action, we get an object with error set not a thrown error
   if (result !== undefined) {

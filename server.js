@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const host = 'localhost';
 const user = 'root';
-const pswd = 'sql2021!';
+const pswd = 'sql2021!'; // 보안에 유의할 것!!
 const dbname = 'habit';
 
 // config db ====================================

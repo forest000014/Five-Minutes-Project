@@ -21,7 +21,7 @@ const store = createStore(mainReducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(watchFetchSearchData);
 
 //fetch initial data
-store.dispatch({ type: 'FETCH_SEARCH_DATA', payload: { firstName: '*' } });
+store.dispatch({ type: 'FETCH_SEARCH_DATA', payload: { firstName: '*' } }); // firstName
 
 ReactDOM.render(
   <Provider store={store}>
