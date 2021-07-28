@@ -9,21 +9,27 @@ class Search extends Component {
   onChange = e => {
     if (e.target.value === '') {
       this.props.fetchData({ firstName: '*' }); 
+      //console.log('firstName: \'*\''); // [TEST]
+      //console.log(this.props.searchData); // [TEST]
     } else {
       this.props.fetchData({ firstName: e.target.value });
+      //console.log('firstName: ' + e.target.value); // [TEST]
+      //onsole.log(this.props.searchData); // [TEST]
     }
     // 여기서 업데이트 해주는 firstName property는 어디에서 쓰이지?
     //   -> Sagas.js 의 searchData 생성에 쓰임.
     // 'firstName'은 어디의 값? 어떻게 쓰이지?
     //   -> fetchData에 정의된 dispatch()를 통해, redux store의 state에 저장된다.
     //   -> 이는 redux의 connect()를 통해, <ConnectedSearch>의 props로 넘겨진다.
-    console.log();
+    console.log(); // 이 문장은 왜 있는 거지?
   };
 
   onClear = e => {
     let searchInput = ReactDOM.findDOMNode(this.refs.searchInput);
     searchInput ? (searchInput.value = '') : '';
     this.props.fetchData({ firstName: '*' });
+    //console.log('firstName: \'*\''); // [TEST]
+    //console.log(this.props.searchData); // [TEST]
   };
 
   onSubmit = e => {
@@ -102,6 +108,10 @@ function mapStatetoProps(state) {
   //  -> dispatch가 실행될 때, reducer가 state를 변경해줌.
   //  -> dispatch를 여기서는 fetchData() 메소드에 정의해 놓음.
   //  -> 그래서 onChange, onClear 이벤트가 발생할 때마다, fetchData()를 실행하여, redux store의 state를 변경해줌.
+  console.log('mapStateToProps()... state.searchData'); // [TEST]
+  console.log(state.searchData); // [TEST]
+  //console.log('this.props.searchData'); // [TEST]
+  //console.log(this.props.searchData); // 이 위치에서는 this에 접근할 수 없음(!)
   return {
     searchData: state.searchData // 이 리턴값을 이용해 this.props.searchData에 값을 넣어주는 것 같다.
   };

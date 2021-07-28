@@ -1,5 +1,5 @@
 function search(query) {
-  return fetch(`http://localhost:3001/api/books?userId=${query}`, { // 3001
+  return fetch(`http://localhost:3001/api/records?user_id=${query}`, { // 3001
     accept: 'application/json'
   })
     .then(checkStatus)

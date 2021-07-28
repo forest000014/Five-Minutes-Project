@@ -32,7 +32,8 @@ class Search extends Component {
 
   onClear = e => {
     let searchInput = ReactDOM.findDOMNode(this.refs.searchInput);
-    searchInput ? (searchInput.value = '') : '';
+    //searchInput ? (searchInput.value = '') : '';
+    if(searchInput) searchInput.value = '';
     this.props.fetchData({ userId: '*', month: '*' });
     console.log('clear button clicked.'); // [TEST]
     console.log(this.props); // [TEST]
@@ -94,6 +95,14 @@ class Search extends Component {
                 id="searchInput" 
                 placeholder="input user_id" 
                 onChange={this.onChangeId} />
+                <Input
+                type="search"
+                name="searchMonth" //
+                ref="searchInput" //
+                id="searchInput" //
+                placeholder="input month"
+                onChange={this.onChangeMonth} //
+              />
             </FormGroup>
             <Button className="btn-ll5" onClick={this.onClear}>
               Clear
@@ -124,16 +133,16 @@ class Search extends Component {
 }
 
 function mapStatetoProps(state) {
-  console.log('mapStateToProps() has been called.');
+  console.log('mapStateToProps()... state.searchData'); // [TEST]
+  console.log(state.searchData); // [TEST]
   return {
     searchData: state.searchData
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  console.log('mapDispatchToProps() has been called.');
   return {
-    fetchData: (user_id, month) => dispatch({ type: 'FETCH_SEARCH_DATA', payload: user_id })
+    fetchData: (user_id, month) => dispatch({ type: 'FETCH_SEARCH_DATA', payload: user_id }) // 파라미터에 user id, month 2가지를 모두 쓰는 방법은?
   };
 }
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './App_old';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import mainReducer from './Reducers';
-import watchFetchSearchData from './Sagas.js';
+import watchFetchSearchData from './Sagas_old'; //
 
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -21,7 +21,7 @@ const store = createStore(mainReducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(watchFetchSearchData);
 
 //fetch initial data
-store.dispatch({ type: 'FETCH_SEARCH_DATA', payload: { userId: '*', month: '*' } }); // 
+store.dispatch({ type: 'FETCH_SEARCH_DATA', payload: { firstName: '*' } });
 
 ReactDOM.render(
   <Provider store={store}>
