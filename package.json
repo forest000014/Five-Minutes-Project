@@ -19,7 +19,10 @@
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "node server.js",
-    "client": "node start-client.js"
+    "client": "node start-client.js",
+    "start_old": "concurrently \"npm run server_old\" \"npm run client_old\"",
+    "server_old": "node server_old.js",
+    "client_old": "node start-client.js"
   },
   "devDependencies": {
     "concurrently": "^3.1.0"

@@ -37,7 +37,7 @@ const pool = mysql.createPool({
 const COLUMNS = ['user_id', 'habit_id', 'day', 'num']; //
 
 app.get('/api/records', (req, res) => {
-  const userId = req.query.userId;
+  const userId = req.query.user_id;
 
   if (!userId) {
     res.json({
@@ -50,7 +50,7 @@ app.get('/api/records', (req, res) => {
   if (userId == '*') {
     queryString = `SELECT * from records`;
   } else {
-    queryString = `SELECT * from records WHERE userId = '${userId}'`;
+    queryString = `SELECT * from records WHERE user_id = '${userId}'`;
   }
 
   pool.query(queryString, function(err, rows, fields) {
@@ -78,19 +78,19 @@ app.get('/api/records', (req, res) => {
 
 // post로 바꿔야 할 것 같다. 사용자가 임의로 url을 변경하여 데이터를 추가할 수 있으니. 서비스에서 제공하는 입력 폼을 통해서만 추가할 수 있게 하고 싶다.
 app.get('/api/add_records', (req, res) => {
-  const userId = req.query.userId;
-  const habit_id = req.query.habit_id;
+  const userId = req.query.user_id;
+  const habitId = req.query.habit_id;
   const day = req.query.day;
   const num = req.query.num;
 
-  if (!userId || !habit_id || !day || !num) {
+  if (!userId || !habitId || !day || !num) {
     res.json({
       error: 'Missing required parameters'
     });
     return;
   }
 
-  let queryString = `insert into habit.records (user_id, habit_id, day, num) VALUES ('${userId}', '${habit_id}', '${day}', ${num});`;
+  let queryString = `insert into habit.records (user_id, habit_id, day, num) VALUES ('${userId}', '${habitId}', '${day}', ${num});`;
 
   pool.query(queryString, function(err, res) {
     if (err) throw err;

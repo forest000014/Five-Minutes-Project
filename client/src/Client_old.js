@@ -1,4 +1,4 @@
-function search(query) {
+function search(query) { // Sagas.js에서 호출
     return fetch(`http://localhost:3001/api/books?firstName=${query}`, { // 3001
       accept: 'application/json'
     })

@@ -7,7 +7,7 @@ import { Container, Row } from 'reactstrap';
 
 class Search extends Component {
   onChangeId = e => {
-    if (e.target.value === '') { // 닉네임과 날짜의 onChange를 별개로 관리하자
+    if (e.target.value === '') {
       this.props.fetchData({ userId: '*' });
       console.log('userId: \'*\''); // [TEST]
       console.log(this.props); // [TEST]
@@ -19,7 +19,7 @@ class Search extends Component {
   };
 
   onChangeMonth = e => {
-    if (e.target.value === '') { // 닉네임과 날짜의 onChange를 별개로 관리하자
+    if (e.target.value === '') {
       this.props.fetchData({ month: '*' });
       console.log('month: \'*\''); // [TEST]
       console.log(this.props); // [TEST]
