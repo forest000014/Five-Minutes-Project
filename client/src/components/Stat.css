@@ -1,38 +1,37 @@
 .box {
-    padding: 1rem;
-    background-color: #161b22;
-    margin: 2rem auto;
-    width: 35rem;
-    max-width: 95%;
-    border-radius: 6px;
-    padding: 20px;
-  }
-  
-  .plain-text {
-    color: white;
-  }
-  
-  .input-box {
-    color: white;
-    background-color: #0d1117;
-    border: 1px solid;
-    border-color: gray;
-    border-radius: 3px;
-    width: 100%;
-    padding: 5px 12px;
-    margin-top: 6px;
-    margin-bottom: 15px;
-  }
-  
-  .button {
-    color: white;
-    background-color: #2ea043;
-    border: 1px solid;
-    border-color: #39b34f;
-    border-radius: 3px;
-    width: 100%;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding: 5px 16px;
-  }
-  
+  padding: 1rem;
+  background-color: #161b22;
+  margin: 2rem auto;
+  width: 35rem;
+  max-width: 95%;
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.plain-text {
+  color: white;
+}
+
+.input-box {
+  color: white;
+  background-color: #0d1117;
+  border: 1px solid;
+  border-color: gray;
+  border-radius: 3px;
+  width: 100%;
+  padding: 5px 12px;
+  margin-top: 6px;
+  margin-bottom: 15px;
+}
+
+.button {
+  color: white;
+  background-color: #2ea043;
+  border: 1px solid;
+  border-color: #39b34f;
+  border-radius: 3px;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 5px 16px;
+}

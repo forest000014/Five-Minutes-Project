@@ -8,6 +8,16 @@
   padding: 20px;
 }
 
+.inner-box {
+  padding: 1rem;
+  background-color: #28313d;
+  margin: 1rem auto;
+  width: 35rem;
+  max-width: 98%;
+  border-radius: 6px;
+  padding: 15px;
+}
+
 .plain-text {
   color: white;
 }
